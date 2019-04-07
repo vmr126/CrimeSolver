@@ -9,14 +9,21 @@ Race <- as.data.frame(read.csv("./Data/Race Data.csv", header=TRUE, sep=","))
 Poverty_Rate <- as.data.frame(read.csv("./Data/Poverty Rate.csv", header=TRUE, sep=","))
 #County_Income <- as.data.frame(read.csv("./Data/County Income Data.csv", header=TRUE, sep=","))
 Education <- as.data.frame(read.csv("./Data/Education data.csv", header=TRUE, sep=","))
+MAP_cleared_uncleared <- read.csv("./Data/unsolvedmurders10_17.csv")
 
 ## pull data headers/descriptions from Census files
 poverty_rate_hdrs <- t(sqldf::sqldf("select * from Poverty_Rate Limit 1"))
 education_hdrs <- t(sqldf::sqldf("select * from Education Limit 1"))
 race_hdrs <- t(sqldf::sqldf("select * from Race Limit 1"))
 
-census_select_string <- "select substr(ed.GEO_display_label, 1, instr(ed.GEO_display_label, ' County,')-1) as County, 
-                          substr(ed.GEO_display_label, instr(ed.GEO_display_label, ',') + 1) as State,  
+## define SQL strings
+select_string <- "select substr(CNTYFIPS, 1, instr(CNTYFIPS, ',')-1) || '-' || State as CntySt,
+                  Solved, Agentype, Year, Month,
+                  Situation, VicAge, VicSex, VicRace,
+                  Weapon  from MAP_cleared_uncleared"
+
+census_select_string <- "select substr(ed.GEO_display_label, 1, instr(ed.GEO_display_label, ' County,')-1) || '-' ||
+                          trim(substr(ed.GEO_display_label, instr(ed.GEO_display_label, ',') + 1)) as CntySt,  
                           ed.HC02_EST_VC17 as ED_RATE, 
                           pr.HC03_EST_VC01 as POV_RATE,
                           rc.HC03_VC93 as HISPANIC,
@@ -31,7 +38,22 @@ census_select_string <- "select substr(ed.GEO_display_label, 1, instr(ed.GEO_dis
                         left join Poverty_Rate pr
                         on ed.GEO_display_label = pr.GEO_display_label
                         left join Race rc
-                        on ed.GEO_display_label = rc.GEO_display_label"
+                        on ed.GEO_display_label = rc.GEO_display_label
+                        where ed.GEO_display_label like '%County%'"
 
+## query subset of data 
 census_query <- sqldf::sqldf(census_select_string)
 census_query = census_query[-1,]
+
+MAP_murders_split <- sqldf::sqldf(select_string)
+
+## join subsets to form master table
+join_query <- "select *
+              from MAP_murders_split a
+              left join census_query b
+              on a.CntySt = b.CntySt"
+
+master <- sqldf::sqldf(join_query)
+
+## list of missing counties due to irregular naming (e.g. Parishes, Boroughs, Independent Cities)
+missing_muni <- sqldf::sqldf("select distinct CntySt from master where ed_rate is null")
