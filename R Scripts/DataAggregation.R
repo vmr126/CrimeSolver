@@ -3,6 +3,7 @@
 
 ## necessary packages
 library(sqldf)
+library(fastDummies)
 
 ## import data
 Race <- as.data.frame(read.csv("./Data/Race Data.csv", header=TRUE, sep=","))
@@ -39,7 +40,45 @@ census_select_string <- "select substr(ed.GEO_display_label, 1, instr(ed.GEO_dis
                         on ed.GEO_display_label = pr.GEO_display_label
                         left join Race rc
                         on ed.GEO_display_label = rc.GEO_display_label
-                        where ed.GEO_display_label like '%County%'"
+                        where ed.GEO_display_label like '%County%'
+                        union
+                        select substr(ed.GEO_display_label, 1, instr(ed.GEO_display_label, ' Parish,')-1) || '-' ||
+                          trim(substr(ed.GEO_display_label, instr(ed.GEO_display_label, ',') + 1)) as CntySt,  
+                          ed.HC02_EST_VC17 as ED_RATE, 
+                          pr.HC03_EST_VC01 as POV_RATE,
+                          rc.HC03_VC93 as HISPANIC,
+                          rc.HC03_VC75 as MULTIRACIAL,
+                          rc.HC03_VC74 as OTHER,
+                          rc.HC03_VC69 as PAC_ISLANDER,
+                          rc.HC03_VC61 as ASIAN,
+                          rc.HC03_VC56 as NATIVE_AM,
+                          rc.HC03_VC55 as AFR_AM,
+                          rc.HC03_VC54 as WHITE
+                          from Education ed
+                          left join Poverty_Rate pr
+                          on ed.GEO_display_label = pr.GEO_display_label
+                          left join Race rc
+                          on ed.GEO_display_label = rc.GEO_display_label
+                          where ed.GEO_display_label like '%Parish%'
+                        union
+                        select substr(ed.GEO_display_label, 1, instr(ed.GEO_display_label, ' city,')-1) || '-' ||
+                          trim(substr(ed.GEO_display_label, instr(ed.GEO_display_label, ',') + 1)) as CntySt,  
+                          ed.HC02_EST_VC17 as ED_RATE, 
+                          pr.HC03_EST_VC01 as POV_RATE,
+                          rc.HC03_VC93 as HISPANIC,
+                          rc.HC03_VC75 as MULTIRACIAL,
+                          rc.HC03_VC74 as OTHER,
+                          rc.HC03_VC69 as PAC_ISLANDER,
+                          rc.HC03_VC61 as ASIAN,
+                          rc.HC03_VC56 as NATIVE_AM,
+                          rc.HC03_VC55 as AFR_AM,
+                          rc.HC03_VC54 as WHITE
+                        from Education ed
+                        left join Poverty_Rate pr
+                        on ed.GEO_display_label = pr.GEO_display_label
+                        left join Race rc
+                        on ed.GEO_display_label = rc.GEO_display_label
+                        where ed.GEO_display_label like '%city%'"
 
 ## query subset of data 
 census_query <- sqldf::sqldf(census_select_string)
@@ -50,10 +89,13 @@ MAP_murders_split <- sqldf::sqldf(select_string)
 ## join subsets to form master table
 join_query <- "select *
               from MAP_murders_split a
-              left join census_query b
+              inner join census_query b
               on a.CntySt = b.CntySt"
 
 master <- sqldf::sqldf(join_query)
-
+master$CntySt..11 <- NULL
 ## list of missing counties due to irregular naming (e.g. Parishes, Boroughs, Independent Cities)
-missing_muni <- sqldf::sqldf("select distinct CntySt from master where ed_rate is null")
+#missing_muni <- sqldf::sqldf("select distinct CntySt from master where ed_rate is null")
+
+master <- dummy_columns(master, select_columns=c('CntySt', 'Solved', 'Agentype', 'Year', 'Month', 'Situation', 'VicSex', 'VicRace', 'Weapon'), remove_first_dummy = TRUE,
+                    remove_most_frequent_dummy = FALSE)
