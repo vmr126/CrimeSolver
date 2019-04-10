@@ -1,0 +1,12 @@
+---
+title: "README_Reference_Tables"
+author: "Timothy J. Michalak"
+date: "4/10/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The folder "Reference Tables" contains information related to the breakdown of variables used in the Clearance Rate Dataset. In particular, these tables examine the dummy variables we create, any observations we left out, and parameters we chose.
