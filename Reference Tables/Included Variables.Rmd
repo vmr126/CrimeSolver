@@ -1,0 +1,108 @@
+---
+title: "Clearance Rate Project - Included Variables"
+author: "Michalak, Raman, Di Fiore, Arbulu"
+date: "Spring, 2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Murder Parameters  
+Our data from the Murder Accountability Project (MAP) contains a number of parameters related to each murder. Below is a brief explanation of each.  
+
+## Solved/Unsolved  
+
+ **Solved**: Each murder was either solved ("Yes") or unsolved ("No"). This is our response variable.  
+ 
+## Agency Type  
+ 
+**Agentype**: There're a number of different agency types. We created n-1 dummy variables for each agency type.  
+        Municipal Police (**excluded variable**)  
+        Sheriff  
+        Primary State LE  
+        County Police  
+        Special Police  
+        Regional Police  
+        Tribal  
+
+## Situation  
+
+**Situation**: Each murder had certain characteristics relating to the numbers and types of victims and offenders. We created n-1 dummy variables for each situation.  
+        Single Victim/Single Offender (**excluded variable**)  
+        Single Victim/Unknown Offender(s)  
+        Multiple Victims/Multiple Offenders  
+        Single Victim/Multiple Offenders  
+        Multiple Victims/Single Offender  
+        Multiple Victims/Unknown Offender(s)  
+
+## Sex  
+**Sex**: Each murder consisted of the sex of victim(s) and offender(s) (or unknown). We created n-1 dummy variables for each.  
+        **Victim Sex**  
+                Male (**excluded variable**)  
+                Female  
+                Unknown  
+
+## Race  
+**Victim Race**: Each murder contains the race of the victim (or unknown). We created n-1 dummy variables for each.  
+        **Victim Race**  
+                Black (**excluded variable**)  
+                White  
+                Indian or Alaskan Native  
+                Asian or Pacific Islander  
+                Uknown  
+
+## Weapon  
+**Weapon Used**: Each murder observation contains the weapon used. We created n-1 dummy variables for each.  
+        Handgun- pistol, revolver, etc. (**excluded variable**)  
+        Firearm, type not stated  
+        Knife or cutting instrument  
+        Personal weapons, includes beating  
+        Other or type unknown  
+        Blunt Object - hammer, club, etc.  
+        Rifle  
+        Shotgun  
+        Asphyxiation - includes death by gas  
+        Strangulation - hanging  
+        Drowning  
+        Other gun  
+        Fire  
+        Poison - does not include gas  
+        Narcotics or drugs, sleeping pills  
+        Explosives  
+        Pushed or thrown out window  
+
+# Time  
+We have included data from the years 2012 to 2017. Our data also identifies the month each murder happened in. For each of these parameters we created two n-1 sets of dummy variables.  
+**2012 is the excluded variable for years**  
+**January is the excluded variable for months**  
+
+# Geography Parameters  
+We have included every county in the United States in our dataset. Of note, however, is an exclusion of Alaska, as they are considered "boroughs" and "Census areas." Indeed, whenever, instead of a county, there is a different geographical jurisdiction, we have excluded it.  
+
+In addition, we have included all states (with the exception of Alaska and territories).  
+
+Since each state can have a county of the same name in another state, we have created a set of n-1 dummy variables deemed County_State. In other words, each dummy variable represents one county in one state to ensure that there is no conflation between counties of the same name in different states.
+
+As there are several thousand county_states, we have decided not to list them here. Of note, however, is that we exclued **Jefferson, Alabama** as our excluded dummy variable.  
+
+
+# Demographic Parameters  
+We have included a number of demographic parameters for each county_state. Drawn from the Census Bureau's 5-Year ACS, we have included the following:  
+        County Education Rate  
+        County Poverty Rate
+        County % Hispanic  
+        County % Multiracial   
+        County % Other Race  
+        County % Pacific Islander  
+        County % Asian  
+        County % Native American  
+        County % African American  
+        County % White
+
+
+
+
+# Complete List of Included Parameters  
+
