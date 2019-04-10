@@ -83,7 +83,6 @@ census_select_string <- "select substr(ed.GEO_display_label, 1, instr(ed.GEO_dis
 ## query subset of data 
 census_query <- sqldf::sqldf(census_select_string)
 census_query = census_query[-1,]
-
 MAP_murders_split <- sqldf::sqldf(select_string)
 
 ## join subsets to form master table
@@ -92,10 +91,28 @@ join_query <- "select *
               inner join census_query b
               on a.CntySt = b.CntySt"
 
+## execute join query for census and MAP data
 master <- sqldf::sqldf(join_query)
+
+## Remove joined CntySt Column
 master$CntySt..11 <- NULL
+
 ## list of missing counties due to irregular naming (e.g. Parishes, Boroughs, Independent Cities)
 #missing_muni <- sqldf::sqldf("select distinct CntySt from master where ed_rate is null")
 
+## Create Dummy Variables
 master <- dummy_columns(master, select_columns=c('CntySt', 'Solved', 'Agentype', 'Year', 'Month', 'Situation', 'VicSex', 'VicRace', 'Weapon'), remove_first_dummy = TRUE,
                     remove_most_frequent_dummy = FALSE)
+
+
+## Remove columns that were turned into dummies
+master$CntySt <- NULL
+master$Solved <- NULL
+master$Agentype <- NULL
+master$Year <- NULL
+master$Month <- NULL
+master$Situation <- NULL
+master$VicSex <- NULL
+master$VicRace <- NULL
+master$Weapon <- NULL
+
