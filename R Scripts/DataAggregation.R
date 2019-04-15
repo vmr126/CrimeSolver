@@ -116,3 +116,13 @@ master$VicSex <- NULL
 master$VicRace <- NULL
 master$Weapon <- NULL
 
+master$ED_RATE <- as.numeric(master$ED_RATE)
+master$POV_RATE <- as.numeric(master$POV_RATE)
+master$HISPANIC <- as.integer(master$HISPANIC)
+master$MULTIRACIAL <- as.integer(master$MULTIRACIAL)
+master$OTHER <- as.integer(master$OTHER)
+master$PAC_ISLANDER <- as.integer(master$PAC_ISLANDER)
+master$ASIAN <- as.integer(master$ASIAN)
+master$NATIVE_AM <- as.integer(master$NATIVE_AM)
+master$AFR_AM <- as.integer(master$AFR_AM)
+master$WHITE <- as.integer(master$WHITE)
