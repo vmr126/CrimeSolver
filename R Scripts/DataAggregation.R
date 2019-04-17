@@ -101,12 +101,17 @@ master$CntySt..11 <- NULL
 #missing_muni <- sqldf::sqldf("select distinct CntySt from master where ed_rate is null")
 
 ## Create Dummy Variables
-master <- dummy_columns(master, select_columns=c('CntySt', 'Solved', 'Agentype', 'Year', 'Month', 'Situation', 'VicSex', 'VicRace', 'Weapon'), remove_first_dummy = TRUE,
-                    remove_most_frequent_dummy = FALSE)
+## master <- dummy_columns(master, select_columns=c('CntySt', 'Solved', 'Agentype', 'Year', 'Month', 'Situation', 'VicSex', 'VicRace', 'Weapon'), remove_first_dummy = TRUE,
+##                    remove_most_frequent_dummy = FALSE)
+
+## Create dummy variables, no CntySt as dummy
+master <- dummy_columns(master, select_columns=c('Solved', 'Agentype', 'Year', 'Month', 'Situation', 'VicSex', 'VicRace', 'Weapon'), 
+                        remove_first_dummy = TRUE,
+                        remove_most_frequent_dummy = FALSE)
 
 
 ## Remove columns that were turned into dummies
-master$CntySt <- NULL
+## master$CntySt <- NULL
 master$Solved <- NULL
 master$Agentype <- NULL
 master$Year <- NULL
@@ -126,3 +131,6 @@ master$ASIAN <- as.integer(master$ASIAN)
 master$NATIVE_AM <- as.integer(master$NATIVE_AM)
 master$AFR_AM <- as.integer(master$AFR_AM)
 master$WHITE <- as.integer(master$WHITE)
+
+master.CntyStFactor <- master
+master.CntyStFactor$CntySt <- as.factor(master.CntyStFactor$CntySt)

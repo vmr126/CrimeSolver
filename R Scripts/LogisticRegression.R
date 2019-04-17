@@ -10,5 +10,5 @@ master.test <- master[-master.index,]
 logistic_regression <- glm(
         formula = Solved_No ~.,
         family = "binomial",
-        data = master.train
+        data = master
 )
