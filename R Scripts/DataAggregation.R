@@ -132,5 +132,6 @@ master$NATIVE_AM <- as.integer(master$NATIVE_AM)
 master$AFR_AM <- as.integer(master$AFR_AM)
 master$WHITE <- as.integer(master$WHITE)
 
+## master dataset with CntySt as factor
 master.CntyStFactor <- master
 master.CntyStFactor$CntySt <- as.factor(master.CntyStFactor$CntySt)
