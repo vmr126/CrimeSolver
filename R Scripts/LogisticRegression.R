@@ -1,16 +1,18 @@
+library(caret)
+
 ## To run after DataAggregation
 ## Create test and training data
 master.index <- createDataPartition(
-        master.CntyStFactor$VicAge,
+        master$VicAge,
         times = 1,
         p = 0.8,
         list = FALSE
 )
-master.train <- master.CntyStFactor[master.index,]
-master.test <- master.CntyStFactor[-master.index,]
+master.train <- master[master.index,]
+master.test <- master[-master.index,]
 
 ## Logistic regression on 100k obs w/o CntySt
-master.train$CntySt <- NULL
+#master.train$CntySt <- NULL
 train.logistic_regression <- glm(
         formula = Solved_No ~.,
         family = "binomial",
