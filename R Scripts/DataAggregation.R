@@ -111,7 +111,7 @@ master <- dummy_columns(master, select_columns=c('Solved', 'Agentype', 'Year', '
 
 
 ## Remove columns that were turned into dummies
-## master$CntySt <- NULL
+master$CntySt <- NULL
 master$Solved <- NULL
 master$Agentype <- NULL
 master$Year <- NULL
