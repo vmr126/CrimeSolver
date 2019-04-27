@@ -105,21 +105,21 @@ master$CntySt..11 <- NULL
 ##                    remove_most_frequent_dummy = FALSE)
 
 ## Create dummy variables, no CntySt as dummy
-master <- dummy_columns(master, select_columns=c('Solved', 'Agentype', 'Year', 'Month', 'Situation', 'VicSex', 'VicRace', 'Weapon'), 
-                        remove_first_dummy = TRUE,
-                        remove_most_frequent_dummy = FALSE)
+#master <- dummy_columns(master, select_columns=c('Agentype', 'Year', 'Month', 'VicSex', 'VicRace', 'Weapon'), 
+#                        remove_first_dummy = TRUE,
+#                        remove_most_frequent_dummy = FALSE)
 
 
 ## Remove columns that were turned into dummies
 master$CntySt <- NULL
-master$Solved <- NULL
-master$Agentype <- NULL
-master$Year <- NULL
-master$Month <- NULL
+#master$Solved <- NULL
+#master$Agentype <- NULL
+#master$Year <- NULL
+#master$Month <- NULL
 master$Situation <- NULL
-master$VicSex <- NULL
-master$VicRace <- NULL
-master$Weapon <- NULL
+#master$VicSex <- NULL
+#master$VicRace <- NULL
+#master$Weapon <- NULL
 
 master$ED_RATE <- as.numeric(master$ED_RATE)
 master$POV_RATE <- as.numeric(master$POV_RATE)
@@ -133,7 +133,16 @@ master$AFR_AM <- as.integer(master$AFR_AM)
 master$WHITE <- as.integer(master$WHITE)
 
 ## master dataset with CntySt as factor
-master$CntySt <- as.factor(master$CntySt)
+#master$CntySt <- as.factor(master$CntySt)
+
+master$Solved <- as.factor(master$Solved)
+master$Agentype <- as.factor(master$Agentype)
+master$Year <- as.factor(master$Year)
+master$Month <- as.factor(master$Month)
+master$VicSex <- as.factor(master$VicSex)
+master$VicRace <- as.factor(master$VicRace)
+master$Weapon <- as.factor(master$Weapon)
+
 
 ## Unload unncessary objects
 rm(list=setdiff(ls(), 'master'))
