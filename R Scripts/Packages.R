@@ -3,14 +3,12 @@ install.packages('sqldf')
 
 ## Data Cleanup Packages
 install.packages("fastDummies")
-install.packages("ROSE")
-install.packages("DMwR")
-
-## Weather Data Packages
 
 ## Statistical Packages
-install.packages("caret")
-install.packages("rpart")
-install.packages("randomForest")
+install.packages('caret')
+install.packages("ROSE")
+install.packages("DMwR")
+install.packages("boot")
 
 ## Graphic Packages
+install.packages("ROCit")
