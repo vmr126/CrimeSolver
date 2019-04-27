@@ -1,9 +1,10 @@
 ## Set Working Directory
 # setwd('C:/Users/vmr12/OneDrive/Documents/GitHub/CrimeSolver')
-
+# setwd("/Users/timothymichalak/Documents/GitHub/CrimeSolver")
 ## necessary packages
 library(sqldf)
 library(fastDummies)
+library(caret)
 
 ## import data
 Race <- as.data.frame(read.csv("./Data/Race Data.csv", header=TRUE, sep=","))
@@ -149,3 +150,13 @@ rm(list=setdiff(ls(), 'master'))
 
 ## Proportion of Solved vs Unsolved - to show imbalance of data
 prop.table((table(master$Solved)))
+
+## Create test and training partitions
+master.index <- createDataPartition(
+        master$VicAge,
+        times = 1,
+        p = 0.8,
+        list = FALSE
+)
+master.train <- master[master.index,]
+master.test <- master[-master.index,]
