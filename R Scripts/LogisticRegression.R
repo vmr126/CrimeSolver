@@ -111,6 +111,4 @@ lasso.predict[lasso.prob>.5] <- "YES"
 table(pred=lasso.predict,
       true=master.test$Solved
       )
-mean(lasso.predict==master.test$Solved)
-
 
