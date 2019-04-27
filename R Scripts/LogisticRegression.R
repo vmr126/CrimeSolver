@@ -1,3 +1,5 @@
+library(caret)
+
 ## To run after DataAggregation
 ## Create test and training data
 master.index <- createDataPartition(
