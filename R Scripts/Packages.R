@@ -10,6 +10,8 @@ install.packages("ROSE")
 install.packages("DMwR")
 install.packages("boot")
 install.packages("e1071")
+install.packages("rpart")
+install.packages("randomForest")
 
 ## Graphic Packages
 install.packages("ROCit")
