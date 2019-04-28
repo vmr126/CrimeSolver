@@ -115,3 +115,10 @@ par(mar=c(5,0,4,2)) #No margin on the left side
 plot(c(0,1),type="n", axes=F, xlab="", ylab="")
 legend("top", colnames(rF_murder_tree$err.rate),col=1:4,cex=0.8,fill=1:4)
 
+# Importance plots for random forest
+importance(rF_murder_tree)
+varImpPlot(rF_murder_tree)
+
+
+# Decision Tree
+
