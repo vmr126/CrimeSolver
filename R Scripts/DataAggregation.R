@@ -5,6 +5,7 @@
 library(sqldf)
 library(fastDummies)
 library(caret)
+library(DMwR)
 
 ## import data
 Race <- as.data.frame(read.csv("./Data/Race Data.csv", header=TRUE, sep=","))
@@ -160,3 +161,7 @@ master.index <- createDataPartition(
 )
 master.train <- master[master.index,]
 master.test <- master[-master.index,]
+
+##Balance Data
+balanced_data <- SMOTE(Solved~., master.train, perc.over=175)
+prop.table((table(balanced_data$Solved)))
