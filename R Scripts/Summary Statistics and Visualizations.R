@@ -8,36 +8,37 @@
 library(ROCit)
 library(glmnet)
 library(sandwich)
+library(ggstance)
+
+## Confusion Tables?
 
 
 ## Summarizing and Visualizing Data
 
-train.summary <- summ(train.logistic_regression)
+logit.train.summary <- summ(train.logistic_regression)
 ## Robust and standardized SEs by 2 SD
-train.robustSE <- summ(train.logistic_regression, 
+logit.train.robustSE <- summ(train.logistic_regression, 
                        robust = TRUE, 
                        scale = TRUE,
                        n.sd = 2,
                        exp = TRUE
 )
-train.CI <- summ(train.logistic_regression,
+logit.train.CI <- summ(train.logistic_regression,
                  confint = TRUE,
                  digits = 3
 )
-effect_plot(train.logistic_regression, 
-            pred = WHITE, 
+effect.plot <- effect_plot(train.logistic_regression, 
+            pred = VicRace, 
             interval = TRUE, 
             plot.points = TRUE
-)
-plot_summs(train.logistic_regression)
-
+            )
 
 ## Check accuracy of training and test predictions
-train.accuracy <- accuracy.meas(
+logit.train.accuracy <- accuracy.meas(
         response = master.train$Solved,
         predicted = train.glm.prob
 )
-test.accuracy <- accuracy.meas(
+logit.test.accuracy <- accuracy.meas(
         response = master.test$Solved, 
         predicted = test.glm.prob
 )
@@ -45,11 +46,11 @@ test.accuracy <- accuracy.meas(
 
 
 ## ROC curves for training and test predictions
-train.roc <- roc.curve(master.train$Solved,
+logit.train.roc <- roc.curve(master.train$Solved,
                        train.glm.prob,
                        plotit=T
 )
-test.roc <- roc.curve(master.test$Solved,
+logit.test.roc <- roc.curve(master.test$Solved,
                       test.glm.prob,
                       plotit=T
 )
