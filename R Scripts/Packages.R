@@ -5,6 +5,7 @@ install.packages('sqldf')
 install.packages("fastDummies")
 
 ## Statistical Packages
+install.packages("glmnet")
 install.packages('caret')
 install.packages("ROSE")
 install.packages("DMwR")
@@ -15,7 +16,9 @@ install.packages("randomForest")
 install.packages("jtools")
 install.packages("sandwich")
 
+
 ## Graphic Packages
+install.packages("ROCR")
 install.packages("ROCit")
 install.packages("ggstance")
 

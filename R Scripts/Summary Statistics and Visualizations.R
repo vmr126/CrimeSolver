@@ -9,6 +9,8 @@ library(ROCit)
 library(glmnet)
 library(sandwich)
 library(ggstance)
+library(ROSE)
+library(ROCR)
 
 ## Confusion Tables?
 
@@ -54,4 +56,21 @@ logit.test.roc <- roc.curve(master.test$Solved,
                       test.glm.prob,
                       plotit=T
 )
+
+## ROC Curves for Trees
+decision.tree.roc <- roc.curve(master.test$Solved,
+                               murder_tree.pred,
+                               plotit=T)
+
+rF.roc <- roc.curve(master.test$Solved,
+                    rF_murder_tree.pred,
+                    plotit=T)
+
+#murder_tree.prediction = prediction(predict(murder_tree, master.test, class="prob")[,2], master.test$Solved) 
+#plot(performance(murder_tree.prediction, "tpr", "fpr"))
+#abline(0,1,lty=2)
+
+#rF_murder_tree.prediction = prediction(predict(rF_murder_tree, master.test, class="prob")[,2], master.test$Solved)
+#plot(performance(rF_murder_tree.prediction, "tpr", "fpr"))
+#abline(0,1,lty=2)
 

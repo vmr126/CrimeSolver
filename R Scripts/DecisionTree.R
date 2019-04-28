@@ -17,8 +17,9 @@ murder_tree.conf_matrix = table(master.test$Solved, murder_tree.pred)
 #murder_tree.cv = xpred.rpart(murder_tree)
 #murder_tree.cv.conf_matrix = table(master.train$Solved, murder_tree.cv)
 
-rF_murder_tree = randomForest(Solved~.,data=master, subset=sample(1:nrow(master), nrow(master)*0.8), importance=TRUE)
-rF_murder_tree.conf_matrix = table(master.test$Solved, predict(rF_murder_tree, master.test, type="Class"))
+rF_murder_tree = randomForest(Solved~.,data=master.train, subset=sample(1:nrow(master.train), nrow(master.train)*0.8), importance=TRUE)
+rF_murder_tree.pred = predict(rF_murder_tree, master.test, type="class")
+rF_murder_tree.conf_matrix = table(master.test$Solved, rF_murder_tree.pred)
 #plot(rF_murder_tree)
 layout(matrix(c(1,2),nrow=1),
        width=c(4,1)) 
