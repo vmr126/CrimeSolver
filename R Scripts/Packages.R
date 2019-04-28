@@ -12,6 +12,11 @@ install.packages("boot")
 install.packages("e1071")
 install.packages("rpart")
 install.packages("randomForest")
+install.packages("jtools")
+install.packages("sandwich")
 
 ## Graphic Packages
 install.packages("ROCit")
+
+
+
