@@ -11,6 +11,7 @@ library(sandwich)
 library(ggstance)
 library(ROSE)
 library(ROCR)
+library(cvTools)
 
 ## Confusion Tables
 confusion.logit.test
@@ -121,4 +122,14 @@ varImpPlot(rF_murder_tree)
 
 
 # Decision Tree
+
+
+# Lasso Plot
+# For interpretation:
+# https://stats.stackexchange.com/questions/68431/interpretting-lasso-variable-trace-plots
+op <- par(mfrow=c(1,2))
+plot(lasso.logit$glmnet.fit,"norm",label=TRUE)
+plot(lasso.logit$glmnet.fit,"lambda",label=TRUE)
+par(op)
+
 
