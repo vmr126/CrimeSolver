@@ -14,12 +14,12 @@ train.logistic_regression <- glm(
         formula = Solved ~.,
         family = "binomial",
         data = master.train
-)
+        )
 # Generate probabilities w/ training logit
 train.glm.prob <- predict(
                 train.logistic_regression,
                 type="response"
-)
+                )
 ## Create empty table for confusion matrix
 train.glm.pred <- rep("No",
                       nrow(master.train)
