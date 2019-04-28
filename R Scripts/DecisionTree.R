@@ -1,5 +1,6 @@
 library(rpart)
 library(randomForest)
+library(DWwR)
 
 murder_tree <- rpart(Solved ~., master.train)
 
@@ -37,8 +38,8 @@ customRF$sort <- function(x) x[order(x[,1]),]
 customRF$levels <- function(x) x$classes
 
 # train model
-control <- trainControl(method="repeatedcv", number=10, repeats=3)
-tunegrid <- expand.grid(.mtry=c(1:18), .ntree=c(10, 50, 100, 250, 500))
+control <- trainControl(method="repeatedcv", number=5, repeats=1)
+tunegrid <- expand.grid(.mtry=c(3,4,5,6,7), .ntree=c(10, 100, 500))
 set.seed(26)
 custom <- train(Solved~., data=master, method=customRF, metric='Accuracy', tuneGrid=tunegrid, trControl=control)
 summary(custom)
