@@ -90,10 +90,8 @@ MAP_murders_split <- sqldf::sqldf(select_string)
 join_query <- "select *
               from MAP_murders_split a
               inner join census_query b
-              on a.CntySt = b.CntySt
-              where a.CntySt like '%California%'
-              or a.CntySt like '%Texas%'"
-
+              on a.CntySt = b.CntySt"
+              
 ## execute join query for census and MAP data
 master <- sqldf::sqldf(join_query)
 

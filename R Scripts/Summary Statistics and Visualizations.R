@@ -11,6 +11,10 @@ library(sandwich)
 library(ggstance)
 library(ROSE)
 library(ROCR)
+library(rattle)
+library(rpart.plot)
+library(RColorBrewer)
+
 
 ## Confusion Tables
 confusion.logit.test
@@ -48,6 +52,12 @@ logit.test.accuracy <- accuracy.meas(
 # Recall = true pos/true pos + false neg
 # F measure = precision/
 
+## Tree Performance Metric
+# Decision Tree
+decsion_tree.performance = tree_performance(murder_tree.conf_matrix)
+
+# Random Forest
+rF.performance = tree_performance(rF_murder_tree.conf_matrix)
 
 ## ROC curves
 
@@ -106,6 +116,9 @@ effect.VicSex
 effect.WHITE
 effect.Month
 
+# Decision Tree Model
+fancyRpartPlot(murder_tree, palettes=c("Greys", "Oranges"), caption = NULL)
+
 # Plot rF_murder_tree
 layout(matrix(c(1,2),nrow=1),
        width=c(4,1)) 
@@ -115,3 +128,6 @@ par(mar=c(5,0,4,2)) #No margin on the left side
 plot(c(0,1),type="n", axes=F, xlab="", ylab="")
 legend("top", colnames(rF_murder_tree$err.rate),col=1:4,cex=0.8,fill=1:4)
 
+# Random Forest Importance
+randomForest::importance(rF_murder_tree)
+varImpPlot(rF_murder_tree)

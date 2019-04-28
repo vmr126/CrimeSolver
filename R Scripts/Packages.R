@@ -21,6 +21,9 @@ install.packages("sandwich")
 install.packages("ROCR")
 install.packages("ROCit")
 install.packages("ggstance")
+install.packages("rattle")
+install.packages("rpart.plot")
+install.packages("RColorBrewer")
 
 
 
