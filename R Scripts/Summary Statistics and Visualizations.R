@@ -61,6 +61,12 @@ logit.test.accuracy <- accuracy.meas(
         response = master.test$Solved, 
         predicted = test.glm.prob
         )
+
+logit.lasso.accuracy <- accuracy.meas(
+                        response = master.test$Solved,
+                        predicted = lasso.prob
+)
+
 # Precision = true pos/true pos + false pos
 # Recall = true pos/true pos + false neg
 # F measure = precision/
