@@ -18,14 +18,26 @@ library(RColorBrewer)
 
 
 ## Confusion Tables
+# Confusion tables for logit using regular training and balanced training
 confusion.logit.test
+# Balanced training
+confusion.logit.balanced.test
+# K Fold Confusion Matrix
 confusion.logit.kfold
+# Lasso confusion matrix
 confusion.lasso
+# Tree confusion matrix
 murder_tree.conf_matrix
+# Random Forst confusion matrix
 rF_murder_tree.conf_matrix
 
 
 ## Summarizing Results
+
+# Lasso Coefficients
+lasso.coef
+lambda.1se <- lasso.logit$lambda.1se
+lasso.coef <- coef(lasso.logit,s=lambda.1se)
 
 # Estimate for coef + SE, z, and p for logit
 logit.train.summary <- summ(train.logistic_regression)
@@ -141,4 +153,5 @@ plot(lasso.logit$glmnet.fit,"norm",label=TRUE)
 plot(lasso.logit$glmnet.fit,"lambda",label=TRUE)
 par(op)
 
+plot(lasso.logit)
 

@@ -10,42 +10,76 @@ library(glmnet)
 
 #master.train$CntySt <- NULL
 # Logit model on training data
+balanced.logistic_regression <- glm(
+        formula = Solved ~.,
+        family = "binomial",
+        data = balanced_data
+        )
+
 train.logistic_regression <- glm(
         formula = Solved ~.,
         family = "binomial",
         data = master.train
-        )
+)
 # Generate probabilities w/ training logit
 train.glm.prob <- predict(
                 train.logistic_regression,
                 type="response"
                 )
+
+balanced.glm.prob <- predict(
+        balanced.logistic_regression,
+        type="response"
+)
+#################### Ignore
 ## Create empty table for confusion matrix
-train.glm.pred <- rep("No",
-                      nrow(master.train)
-                      )
+#balanced.glm.pred <- rep("No",
+#                      nrow(balanced_data)
+#                      )
+#
+#train.glm.pred <- rep("No",
+#                        nrow(master.train)
+#)
 ## All predictions > 0.5 coded as SOLVED
-train.glm.pred[train.glm.prob>0.5]<-"Yes"
-
+#train.glm.pred[train.glm.prob>0.5]<-"Yes"
+#balanced.glm.pred[balanced.glm.prob>0.5] <- "Yes"
 ## Confusion Matrix for training logit
-confusion.logit.train <- table(
-                                train.glm.pred,
-                               master.train$Solved
-                               )
-
+#confusion.logit.train <- table(
+#                                train.glm.pred,
+#                              master.train$Solved
+#                               )
+#
+#confusion.logit.balanced <- table(
+#        balanced.glm.pred,
+#        balanced_data$Solved
+#)
+#
+####################### Ignore
 ## Predict test data
+
 test.glm.prob <- predict(
                 train.logistic_regression, 
                 newdata=master.test,
                 type="response"
                 )
 
+balanced.test.glm.prob <- predict(
+        balanced.logistic_regression, 
+        newdata=master.test,
+        type="response"
+        )
+
 ## Create empty table with UNSOLVED
+balanced.test.glm.pred <- rep("No",
+                     nrow(master.test)
+                     )
+
 test.glm.pred <- rep("No",
                      nrow(master.test)
                      )
 ## Turn > 0.5 probabilities to SOLVED
 test.glm.pred[test.glm.prob>0.5]<-"Yes"
+balanced.test.glm.pred[balanced.test.glm.prob>0.5]<-"Yes"
 
 ## Confusion matrix for test logit
 confusion.logit.test <- table(
@@ -53,9 +87,25 @@ confusion.logit.test <- table(
         master.test$Solved
         )
 
+confusion.logit.balanced.test <- table(
+        balanced.test.glm.pred,
+        master.test$Solved
+        )
 
-## K-Fold
+## Coercing matrix for K-Fold Lasso
+x.train <- model.matrix(Solved~.,
+                  balanced_data
+                  )
+y.train <- ifelse(balanced_data$Solved=="Yes",
+            1,
+            0
+            )
 
+x.test <- model.matrix(Solved~.,
+                       master.test
+                       )
+
+## 10 K-Fold Logistic Regression
 ctrl <- trainControl(method = "repeatedcv", number = 10, savePredictions = TRUE)
 
 mod_fit <- train(Solved~.,
@@ -72,7 +122,7 @@ pred = predict(mod_fit,
 confusion.logit.kfold <- confusionMatrix(data=pred, master.test$Solved)
 
 
-## Bootstrapping
+## Bootstrapping - Ignore for now
 #master.matrix <- model.matrix(Solved ~., data=master)
 # boot_fn <- function(data, index, formula) {
 #        data <- data[index,]
@@ -88,20 +138,16 @@ confusion.logit.kfold <- confusionMatrix(data=pred, master.test$Solved)
 #        statistic = boot_fn,
 #        R = 2
 #)
+######### Please ignore. Vestige of the past.
 
-## Lasso Model
-x <- model.matrix(Solved~.,
-                  master.train
-                  )
-y <- ifelse(master.train$Solved=="Yes",
-            1,
-            0
-            )
-lasso.logit <- cv.glmnet(x, 
-                      y,
+
+## Lasso Model with K-Fold
+lasso.logit <- cv.glmnet(x.train, 
+                      y.train,
                       alpha=1,
                       family = "binomial",
-                      type.measure="mse"
+                      type.measure="mse",
+                      nfolds = 10
                       )
 lambda.min <- lasso.logit$lambda.min
 lambda.1se <- lasso.logit$lambda.1se
@@ -122,4 +168,6 @@ lasso.predict[lasso.prob>.5] <- "YES"
 confusion.lasso <- table(pred=lasso.predict,
       true=master.test$Solved
       )
-remove(x, y, x.test)
+remove(x.test, x.train, y.train, pred, lasso.predict, test.glm.prob,
+       train.glm.prob, balanced.glm.prob, balanced.test.glm.prob,
+       balanced.test.glm.pred, ctrl, master.index)
