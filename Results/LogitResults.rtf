@@ -1,0 +1,479 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww13360\viewh10280\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # Regular logit confusion matrix\
+test.glm.pred    No   Yes\
+          No   1903  1365\
+          Yes  5476 15771\
+\
+Balanced data logit confusion matrix\
+balanced.test.glm.pred    No   Yes\
+                   No   4625  6375\
+                   Yes  2754 10761\
+\
+# Results for K-Fold of logit with reg training data\
+Confusion Matrix and Statistics\
+\
+          Reference\
+Prediction    No   Yes\
+       No   1903  1365\
+       Yes  5476 15771\
+                                          \
+               Accuracy : 0.7209          \
+                 95% CI : (0.7153, 0.7266)\
+    No Information Rate : 0.699           \
+    P-Value [Acc > NIR] : 2.399e-14       \
+                                          \
+                  Kappa : 0.2118          \
+ Mcnemar's Test P-Value : < 2.2e-16       \
+                                          \
+            Sensitivity : 0.25789         \
+            Specificity : 0.92034         \
+         Pos Pred Value : 0.58231         \
+         Neg Pred Value : 0.74227         \
+             Prevalence : 0.30100         \
+         Detection Rate : 0.07763         \
+   Detection Prevalence : 0.13331         \
+      Balanced Accuracy : 0.58912         \
+                                          \
+       'Positive' Class : No   \
+\
+\
+# Confusion matrix for K-Folded Lasso\
+\
+     true\
+pred     No   Yes\
+  NO   4628  6370\
+  YES  2751 10766\
+\
+\
+# Lasso Coefficients\
+\
+59 x 1 sparse Matrix of class "dgCMatrix"\
+                                                     1\
+(Intercept)                               1.475490e+00\
+(Intercept)                               .           \
+AgentypeMunicipal police                  1.725161e-01\
+AgentypePrimary state LE                 -1.347607e-01\
+AgentypeRegional police                  -4.900809e-01\
+AgentypeSheriff                          -3.412349e-01\
+AgentypeSpecial police                   -8.476832e-01\
+AgentypeTribal                            .           \
+Year2011                                  .           \
+Year2012                                  9.679518e-02\
+Year2013                                 -1.294679e-02\
+Year2014                                  .           \
+Year2015                                  1.303411e-02\
+Year2016                                  .           \
+Year2017                                 -3.644588e-02\
+MonthAugust                              -6.186659e-02\
+MonthDecember                            -1.195145e-01\
+MonthFebruary                             1.100264e-01\
+MonthJanuary                              9.573773e-02\
+MonthJuly                                 .           \
+MonthJune                                 .           \
+MonthMarch                                8.338982e-02\
+MonthMay                                  1.611921e-02\
+MonthNovember                            -5.783046e-02\
+MonthOctober                             -7.301965e-02\
+MonthSeptember                            .           \
+VicAge                                   -6.129527e-05\
+VicSexMale                                2.933743e-01\
+VicSexUnknown                            -1.188052e+00\
+VicRaceAsian or Pacific Islander          .           \
+VicRaceBlack                             -1.120453e-01\
+VicRaceUnknown                           -4.558809e-01\
+VicRaceWhite                              2.868625e-01\
+WeaponBlunt object - hammer, club, etc    .           \
+WeaponDrowning                            1.747453e+00\
+WeaponExplosives                          .           \
+WeaponFire                               -3.124804e-01\
+WeaponFirearm, type not stated           -5.572269e-01\
+WeaponHandgun - pistol, revolver, etc     .           \
+WeaponKnife or cutting instrument         5.663299e-01\
+WeaponNarcotics or drugs, sleeping pills  5.498572e-01\
+WeaponOther gun                          -8.649240e-01\
+WeaponOther or type unknown              -4.908871e-01\
+WeaponPersonal weapons, includes beating  6.068634e-01\
+WeaponPoison - does not include gas       1.175201e-02\
+WeaponPushed or thrown out window         3.060824e-01\
+WeaponRifle                               2.994080e-01\
+WeaponShotgun                             5.793144e-01\
+WeaponStrangulation - hanging            -1.417205e-01\
+ED_RATE                                  -3.292580e-02\
+POV_RATE                                 -2.419564e-03\
+HISPANIC                                 -9.947274e-03\
+MULTIRACIAL                               2.946490e-02\
+OTHER                                    -3.348768e-02\
+PAC_ISLANDER                              1.770997e-01\
+ASIAN                                    -1.382810e-02\
+NATIVE_AM                                 1.765547e-02\
+AFR_AM                                    .           \
+WHITE                                     2.303489e-02\
+\
+# Lambda 1 SE\
+[1] 0.002199982\
+\
+# Lasso Coef 1 SE\
+\
+59 x 1 sparse Matrix of class "dgCMatrix"\
+                                                     1\
+(Intercept)                               1.475490e+00\
+(Intercept)                               .           \
+AgentypeMunicipal police                  1.725161e-01\
+AgentypePrimary state LE                 -1.347607e-01\
+AgentypeRegional police                  -4.900809e-01\
+AgentypeSheriff                          -3.412349e-01\
+AgentypeSpecial police                   -8.476832e-01\
+AgentypeTribal                            .           \
+Year2011                                  .           \
+Year2012                                  9.679518e-02\
+Year2013                                 -1.294679e-02\
+Year2014                                  .           \
+Year2015                                  1.303411e-02\
+Year2016                                  .           \
+Year2017                                 -3.644588e-02\
+MonthAugust                              -6.186659e-02\
+MonthDecember                            -1.195145e-01\
+MonthFebruary                             1.100264e-01\
+MonthJanuary                              9.573773e-02\
+MonthJuly                                 .           \
+MonthJune                                 .           \
+MonthMarch                                8.338982e-02\
+MonthMay                                  1.611921e-02\
+MonthNovember                            -5.783046e-02\
+MonthOctober                             -7.301965e-02\
+MonthSeptember                            .           \
+VicAge                                   -6.129527e-05\
+VicSexMale                                2.933743e-01\
+VicSexUnknown                            -1.188052e+00\
+VicRaceAsian or Pacific Islander          .           \
+VicRaceBlack                             -1.120453e-01\
+VicRaceUnknown                           -4.558809e-01\
+VicRaceWhite                              2.868625e-01\
+WeaponBlunt object - hammer, club, etc    .           \
+WeaponDrowning                            1.747453e+00\
+WeaponExplosives                          .           \
+WeaponFire                               -3.124804e-01\
+WeaponFirearm, type not stated           -5.572269e-01\
+WeaponHandgun - pistol, revolver, etc     .           \
+WeaponKnife or cutting instrument         5.663299e-01\
+WeaponNarcotics or drugs, sleeping pills  5.498572e-01\
+WeaponOther gun                          -8.649240e-01\
+WeaponOther or type unknown              -4.908871e-01\
+WeaponPersonal weapons, includes beating  6.068634e-01\
+WeaponPoison - does not include gas       1.175201e-02\
+WeaponPushed or thrown out window         3.060824e-01\
+WeaponRifle                               2.994080e-01\
+WeaponShotgun                             5.793144e-01\
+WeaponStrangulation - hanging            -1.417205e-01\
+ED_RATE                                  -3.292580e-02\
+POV_RATE                                 -2.419564e-03\
+HISPANIC                                 -9.947274e-03\
+MULTIRACIAL                               2.946490e-02\
+OTHER                                    -3.348768e-02\
+PAC_ISLANDER                              1.770997e-01\
+ASIAN                                    -1.382810e-02\
+NATIVE_AM                                 1.765547e-02\
+AFR_AM                                    .           \
+WHITE                                     2.303489e-02\
+\
+\
+# Logit, regular training data summary of model\
+\
+MODEL INFO:\
+Observations: 98072\
+Dependent Variable: Solved\
+Type: Generalized linear model\
+  Family: binomial \
+  Link function: logit \
+\
+MODEL FIT:\
+\uc0\u967 \'b2(57) = 13270.72, p = 0.00\
+Pseudo-R\'b2 (Cragg-Uhler) = 0.18\
+Pseudo-R\'b2 (McFadden) = 0.11\
+AIC = 106629.42, BIC = 107180.04 \
+\
+Standard errors: MLE\
+---------------------------------------------------------------\
+                                    Est.   S.E.   z val.      p\
+-------------------------------- ------- ------ -------- ------\
+(Intercept)                        13.84   1.28    10.77   0.00\
+AgentypeMunicipal police           -0.43   0.04    -9.65   0.00\
+AgentypePrimary state LE            0.08   0.08     0.98   0.33\
+AgentypeRegional police            -0.28   0.36    -0.76   0.45\
+AgentypeSheriff                    -0.10   0.05    -2.06   0.04\
+AgentypeSpecial police             -0.21   0.16    -1.31   0.19\
+AgentypeTribal                     -0.27   0.28    -0.98   0.33\
+Year2011                           -0.02   0.03    -0.72   0.47\
+Year2012                           -0.02   0.03    -0.51   0.61\
+Year2013                           -0.04   0.03    -1.40   0.16\
+Year2014                           -0.05   0.03    -1.59   0.11\
+Year2015                           -0.08   0.03    -2.76   0.01\
+Year2016                           -0.11   0.03    -3.61   0.00\
+Year2017                           -0.14   0.03    -4.79   0.00\
+MonthAugust                        -0.14   0.04    -3.92   0.00\
+MonthDecember                      -0.26   0.04    -7.06   0.00\
+MonthFebruary                       0.09   0.04     2.24   0.02\
+MonthJanuary                       -0.00   0.04    -0.02   0.98\
+MonthJuly                          -0.09   0.04    -2.55   0.01\
+MonthJune                          -0.06   0.04    -1.70   0.09\
+MonthMarch                         -0.00   0.04    -0.09   0.93\
+MonthMay                           -0.04   0.04    -1.14   0.26\
+MonthNovember                      -0.25   0.04    -6.80   0.00\
+MonthOctober                       -0.18   0.04    -4.90   0.00\
+MonthSeptember                     -0.11   0.04    -2.98   0.00\
+VicAge                             -0.00   0.00    -8.39   0.00\
+VicSexMale                         -0.66   0.02   -30.34   0.00\
+VicSexUnknown                      -1.25   0.15    -8.21   0.00\
+VicRaceAsian or Pacific             0.12   0.13     0.92   0.36\
+Islander                                                       \
+VicRaceBlack                       -0.60   0.11    -5.26   0.00\
+VicRaceUnknown                     -0.42   0.13    -3.20   0.00\
+VicRaceWhite                       -0.05   0.11    -0.41   0.68\
+WeaponBlunt object - hammer,       -0.17   0.12    -1.37   0.17\
+club, etc                                                      \
+WeaponDrowning                      1.27   0.41     3.06   0.00\
+WeaponExplosives                    0.03   0.53     0.06   0.95\
+WeaponFire                         -0.45   0.15    -2.99   0.00\
+WeaponFirearm, type not            -1.00   0.11    -8.78   0.00\
+stated                                                         \
+WeaponHandgun - pistol,            -0.52   0.11    -4.58   0.00\
+revolver, etc                                                  \
+WeaponKnife or cutting              0.41   0.12     3.50   0.00\
+instrument                                                     \
+WeaponNarcotics or drugs,           0.09   0.18     0.52   0.60\
+sleeping pills                                                 \
+WeaponOther gun                    -1.21   0.13    -9.05   0.00\
+WeaponOther or type                -0.79   0.12    -6.80   0.00\
+unknown                                                        \
+WeaponPersonal weapons,             0.66   0.12     5.39   0.00\
+includes beating                                               \
+WeaponPoison - does not             0.10   0.35     0.30   0.77\
+include gas                                                    \
+WeaponPushed or thrown out          0.19   0.67     0.28   0.78\
+window                                                         \
+WeaponRifle                        -0.13   0.12    -1.04   0.30\
+WeaponShotgun                       0.33   0.13     2.54   0.01\
+WeaponStrangulation -              -0.33   0.15    -2.15   0.03\
+hanging                                                        \
+ED_RATE                            -0.02   0.00    -6.61   0.00\
+POV_RATE                           -0.01   0.00    -1.95   0.05\
+HISPANIC                           -0.01   0.00    -6.27   0.00\
+MULTIRACIAL                        -0.04   0.01    -3.07   0.00\
+OTHER                              -0.15   0.01   -11.28   0.00\
+PAC_ISLANDER                       -0.07   0.03    -2.40   0.02\
+ASIAN                              -0.13   0.01    -9.98   0.00\
+NATIVE_AM                          -0.10   0.01    -7.87   0.00\
+AFR_AM                             -0.10   0.01    -7.99   0.00\
+WHITE                              -0.09   0.01    -7.08   0.00\
+---------------------------------------------------------------\
+\
+\
+\
+# Logit, regular training data w robust SE. Standardized w/ 2 standard dev\
+\
+MODEL INFO:\
+Observations: 98072\
+Dependent Variable: Solved\
+Type: Generalized linear model\
+  Family: binomial \
+  Link function: logit \
+\
+MODEL FIT:\
+\uc0\u967 \'b2(57) = 13270.72, p = 0.00\
+Pseudo-R\'b2 (Cragg-Uhler) = 0.18\
+Pseudo-R\'b2 (McFadden) = 0.11\
+AIC = 106629.42, BIC = 107180.04 \
+\
+Standard errors: Robust, type = HC3\
+----------------------------------------------------------------------------\
+                                   exp(Est.)    2.5%   97.5%   z val.      p\
+-------------------------------- ----------- ------- ------- -------- ------\
+(Intercept)                            15.79   11.32   22.02    16.26   0.00\
+AgentypeMunicipal police                0.65    0.59    0.71    -9.39   0.00\
+AgentypePrimary state LE                1.08    0.92    1.28     0.96   0.34\
+AgentypeRegional police                 0.76    0.35    1.67    -0.69   0.49\
+AgentypeSheriff                         0.90    0.82    1.00    -2.03   0.04\
+AgentypeSpecial police                  0.81    0.59    1.12    -1.27   0.20\
+AgentypeTribal                          0.76    0.47    1.25    -1.08   0.28\
+Year2011                                0.98    0.92    1.04    -0.72   0.47\
+Year2012                                0.98    0.93    1.05    -0.51   0.61\
+Year2013                                0.96    0.90    1.02    -1.39   0.16\
+Year2014                                0.95    0.89    1.01    -1.59   0.11\
+Year2015                                0.92    0.87    0.98    -2.76   0.01\
+Year2016                                0.90    0.85    0.95    -3.61   0.00\
+Year2017                                0.87    0.82    0.92    -4.79   0.00\
+MonthAugust                             0.87    0.81    0.93    -3.93   0.00\
+MonthDecember                           0.77    0.72    0.83    -7.05   0.00\
+MonthFebruary                           1.09    1.01    1.18     2.24   0.02\
+MonthJanuary                            1.00    0.93    1.08    -0.02   0.98\
+MonthJuly                               0.91    0.85    0.98    -2.55   0.01\
+MonthJune                               0.94    0.87    1.01    -1.70   0.09\
+MonthMarch                              1.00    0.93    1.07    -0.09   0.93\
+MonthMay                                0.96    0.89    1.03    -1.14   0.26\
+MonthNovember                           0.78    0.72    0.84    -6.82   0.00\
+MonthOctober                            0.84    0.78    0.90    -4.91   0.00\
+MonthSeptember                          0.90    0.83    0.96    -2.98   0.00\
+VicAge                                  0.88    0.85    0.91    -8.31   0.00\
+VicSexMale                              0.52    0.50    0.54   -30.26   0.00\
+VicSexUnknown                           0.29    0.21    0.39    -8.00   0.00\
+VicRaceAsian or Pacific                 1.13    0.87    1.45     0.92   0.36\
+Islander                                                                    \
+VicRaceBlack                            0.55    0.44    0.69    -5.33   0.00\
+VicRaceUnknown                          0.65    0.51    0.85    -3.22   0.00\
+VicRaceWhite                            0.95    0.77    1.19    -0.42   0.68\
+WeaponBlunt object - hammer,            0.85    0.66    1.08    -1.33   0.18\
+club, etc                                                                   \
+WeaponDrowning                          3.55    1.53    8.24     2.94   0.00\
+WeaponExplosives                        1.03    0.33    3.21     0.05   0.96\
+WeaponFire                              0.64    0.47    0.87    -2.88   0.00\
+WeaponFirearm, type not                 0.37    0.29    0.46    -8.54   0.00\
+stated                                                                      \
+WeaponHandgun - pistol,                 0.59    0.47    0.75    -4.46   0.00\
+revolver, etc                                                               \
+WeaponKnife or cutting                  1.50    1.19    1.90     3.41   0.00\
+instrument                                                                  \
+WeaponNarcotics or drugs,               1.10    0.77    1.56     0.50   0.61\
+sleeping pills                                                              \
+WeaponOther gun                         0.30    0.23    0.39    -8.77   0.00\
+WeaponOther or type                     0.45    0.36    0.57    -6.61   0.00\
+unknown                                                                     \
+WeaponPersonal weapons,                 1.93    1.51    2.47     5.25   0.00\
+includes beating                                                            \
+WeaponPoison - does not                 1.11    0.54    2.29     0.29   0.78\
+include gas                                                                 \
+WeaponPushed or thrown out              1.21    0.26    5.52     0.24   0.81\
+window                                                                      \
+WeaponRifle                             0.88    0.69    1.13    -1.02   0.31\
+WeaponShotgun                           1.40    1.07    1.82     2.49   0.01\
+WeaponStrangulation -                   0.72    0.53    0.98    -2.07   0.04\
+hanging                                                                     \
+ED_RATE                                 0.82    0.78    0.87    -6.72   0.00\
+POV_RATE                                0.95    0.91    1.00    -2.00   0.05\
+HISPANIC                                0.84    0.79    0.88    -6.27   0.00\
+MULTIRACIAL                             0.86    0.78    0.95    -3.06   0.00\
+OTHER                                   0.20    0.15    0.26   -11.24   0.00\
+PAC_ISLANDER                            0.94    0.89    0.99    -2.34   0.02\
+ASIAN                                   0.24    0.19    0.32    -9.97   0.00\
+NATIVE_AM                               0.53    0.45    0.62    -7.86   0.00\
+AFR_AM                                  0.04    0.02    0.09    -7.99   0.00\
+WHITE                                   0.06    0.03    0.13    -7.08   0.00\
+----------------------------------------------------------------------------\
+\
+Continuous predictors are mean-centered and scaled by 2 s.d.\
+\
+\
+# Logit, regular training data w/ Confidence Intervals\
+\
+\
+MODEL INFO:\
+Observations: 98072\
+Dependent Variable: Solved\
+Type: Generalized linear model\
+  Family: binomial \
+  Link function: logit \
+\
+MODEL FIT:\
+\uc0\u967 \'b2(57) = 13270.716, p = 0.000\
+Pseudo-R\'b2 (Cragg-Uhler) = 0.179\
+Pseudo-R\'b2 (McFadden) = 0.111\
+AIC = 106629.419, BIC = 107180.039 \
+\
+Standard errors: MLE\
+-----------------------------------------------------------------------------\
+                                     Est.     2.5%    97.5%    z val.       p\
+-------------------------------- -------- -------- -------- --------- -------\
+(Intercept)                        13.839   11.321   16.357    10.771   0.000\
+AgentypeMunicipal police           -0.432   -0.519   -0.344    -9.649   0.000\
+AgentypePrimary state LE            0.081   -0.082    0.244     0.976   0.329\
+AgentypeRegional police            -0.276   -0.987    0.436    -0.759   0.448\
+AgentypeSheriff                    -0.102   -0.199   -0.005    -2.064   0.039\
+AgentypeSpecial police             -0.208   -0.520    0.103    -1.312   0.190\
+AgentypeTribal                     -0.271   -0.811    0.269    -0.984   0.325\
+Year2011                           -0.022   -0.083    0.038    -0.722   0.470\
+Year2012                           -0.016   -0.076    0.045    -0.507   0.612\
+Year2013                           -0.044   -0.105    0.017    -1.401   0.161\
+Year2014                           -0.050   -0.111    0.011    -1.593   0.111\
+Year2015                           -0.083   -0.143   -0.024    -2.756   0.006\
+Year2016                           -0.107   -0.165   -0.049    -3.615   0.000\
+Year2017                           -0.142   -0.201   -0.084    -4.794   0.000\
+MonthAugust                        -0.142   -0.213   -0.071    -3.923   0.000\
+MonthDecember                      -0.258   -0.329   -0.186    -7.060   0.000\
+MonthFebruary                       0.090    0.011    0.169     2.243   0.025\
+MonthJanuary                       -0.001   -0.075    0.073    -0.021   0.983\
+MonthJuly                          -0.092   -0.162   -0.021    -2.548   0.011\
+MonthJune                          -0.063   -0.135    0.009    -1.704   0.088\
+MonthMarch                         -0.003   -0.078    0.071    -0.089   0.929\
+MonthMay                           -0.042   -0.114    0.030    -1.137   0.256\
+MonthNovember                      -0.251   -0.324   -0.179    -6.798   0.000\
+MonthOctober                       -0.179   -0.250   -0.107    -4.902   0.000\
+MonthSeptember                     -0.110   -0.182   -0.038    -2.982   0.003\
+VicAge                             -0.001   -0.001   -0.000    -8.386   0.000\
+VicSexMale                         -0.658   -0.700   -0.615   -30.338   0.000\
+VicSexUnknown                      -1.251   -1.550   -0.953    -8.210   0.000\
+VicRaceAsian or Pacific             0.119   -0.135    0.372     0.918   0.359\
+Islander                                                                     \
+VicRaceBlack                       -0.597   -0.820   -0.375    -5.263   0.000\
+VicRaceUnknown                     -0.423   -0.683   -0.164    -3.197   0.001\
+VicRaceWhite                       -0.047   -0.269    0.175    -0.413   0.679\
+WeaponBlunt object - hammer,       -0.167   -0.404    0.071    -1.374   0.169\
+club, etc                                                                    \
+WeaponDrowning                      1.266    0.456    2.075     3.064   0.002\
+WeaponExplosives                    0.031   -1.016    1.077     0.058   0.954\
+WeaponFire                         -0.452   -0.748   -0.155    -2.986   0.003\
+WeaponFirearm, type not            -1.002   -1.225   -0.778    -8.777   0.000\
+stated                                                                       \
+WeaponHandgun - pistol,            -0.520   -0.742   -0.297    -4.580   0.000\
+revolver, etc                                                                \
+WeaponKnife or cutting              0.407    0.179    0.635     3.503   0.000\
+instrument                                                                   \
+WeaponNarcotics or drugs,           0.091   -0.253    0.436     0.521   0.602\
+sleeping pills                                                               \
+WeaponOther gun                    -1.206   -1.467   -0.945    -9.047   0.000\
+WeaponOther or type                -0.790   -1.018   -0.562    -6.803   0.000\
+unknown                                                                      \
+WeaponPersonal weapons,             0.659    0.419    0.898     5.390   0.000\
+includes beating                                                             \
+WeaponPoison - does not             0.105   -0.588    0.798     0.297   0.767\
+include gas                                                                  \
+WeaponPushed or thrown out          0.187   -1.122    1.495     0.280   0.780\
+window                                                                       \
+WeaponRifle                        -0.129   -0.372    0.114    -1.038   0.299\
+WeaponShotgun                       0.335    0.077    0.593     2.545   0.011\
+WeaponStrangulation -              -0.328   -0.628   -0.028    -2.146   0.032\
+hanging                                                                      \
+ED_RATE                            -0.019   -0.025   -0.014    -6.614   0.000\
+POV_RATE                           -0.005   -0.010    0.000    -1.946   0.052\
+HISPANIC                           -0.005   -0.007   -0.003    -6.266   0.000\
+MULTIRACIAL                        -0.043   -0.071   -0.016    -3.069   0.002\
+OTHER                              -0.153   -0.179   -0.126   -11.276   0.000\
+PAC_ISLANDER                       -0.072   -0.132   -0.013    -2.396   0.017\
+ASIAN                              -0.127   -0.152   -0.102    -9.979   0.000\
+NATIVE_AM                          -0.102   -0.128   -0.077    -7.871   0.000\
+AFR_AM                             -0.100   -0.124   -0.075    -7.994   0.000\
+WHITE                              -0.089   -0.113   -0.064    -7.083   0.000\
+-----------------------------------------------------------------------------\
+\
+\
+\
+# Logit cv with test data, report on accuracy\
+\
+Call: \
+accuracy.meas(response = master.test$Solved, predicted = test.glm.prob)\
+\
+Examples are labelled as positive when predicted is greater than 0.5 \
+\
+precision: 0.742\
+recall: 0.920\
+F: 0.411\
+\
+# Logit, test ROC\
+Area under the curve (AUC): 0.729\
+\
+# \
+}
