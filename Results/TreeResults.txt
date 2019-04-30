@@ -1,0 +1,45 @@
+Confusion Matrix
+
+- Decision Tree
+      Predicted
+Actual    No   Yes
+   No   4861  2417
+   Yes  6767 10470
+
+- Random Forest
+      Predicted
+Actual    No   Yes
+   No   4075  3203
+   Yes  3154 14083
+
+Overall Performance Metrics
+
+-Decision Tree
+    precision    recall        f1
+No  0.4180427 0.6679033 0.5142283
+Yes 0.8124467 0.6074143 0.6951268
+
+- Random Forest
+    precision    recall        f1
+No  0.5637018 0.5599066 0.5617978
+Yes 0.8147055 0.8170215 0.8158619
+
+Random Forest Importance
+                     No       Yes MeanDecreaseAccuracy MeanDecreaseGini
+Agentype       2.873255  98.49107             99.47313        1128.5294
+Year          94.315908 267.56715            258.43140        3542.9326
+Month         74.093530 265.49238            258.61569        4698.2665
+VicAge        92.096355 167.95900            172.78344        4363.6600
+VicSex        62.947634  56.89446             76.00257         670.2479
+VicRace       57.954494  95.08276             99.91966        1173.3931
+Weapon       203.361193 208.07251            252.87327        3350.8709
+ED_RATE       15.414159  93.23990            105.75803        2010.9461
+POV_RATE      10.226184  67.82629             68.42567        2006.0375
+HISPANIC      19.383893  62.52023             60.13653        1890.6313
+MULTIRACIAL   35.538438  77.22004             70.20807        2136.6692
+OTHER         25.053444  78.54220             66.81820        2338.8878
+PAC_ISLANDER  -8.938382  34.70077             34.51626         106.0812
+ASIAN         40.735339  87.13124             76.66557        3336.6011
+NATIVE_AM      5.763356  26.85511             26.80497         305.0633
+AFR_AM        28.100361  96.01510             92.99778        2577.3728
+WHITE         26.595249  81.60279             74.35274        3051.9140
