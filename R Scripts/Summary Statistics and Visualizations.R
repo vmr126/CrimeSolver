@@ -15,6 +15,7 @@ library(cvTools)
 library(rattle)
 library(rpart.plot)
 library(RColorBrewer)
+library(jtools)
 
 
 ## Confusion Tables
@@ -115,6 +116,12 @@ effect.WHITE <- effect_plot(train.logistic_regression,
                               pred = WHITE, 
                               interval = TRUE, 
                               plot.points = TRUE
+)
+
+effect.AFRAM <- effect_plot(train.logistic_regression, 
+                            pred = AFR_AM, 
+                            interval = TRUE, 
+                            plot.points = TRUE
 )
 
 effect.VicSex <- effect_plot(train.logistic_regression, 
