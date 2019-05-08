@@ -148,9 +148,9 @@ fancyRpartPlot(murder_tree, palettes=c("Blues", "Oranges"), caption = NULL, spli
 # Plot rF_murder_tree
 layout(matrix(c(1,2),nrow=1),
        width=c(4,1)) 
-par(mar=c(5,4,4,0)) #No margin on the right side
+par(mar=c(5,4,4,0))
 plot(rF_murder_tree, main = "Random Forest Model Error Rate")
-par(mar=c(5,0,4,2)) #No margin on the left side
+par(mar=c(5,0,4,2))
 plot(c(0,1),type="n", axes=F, xlab="", ylab="")
 legend("top", colnames(rF_murder_tree$err.rate),col=1:4,cex=0.8,fill=1:4)
 

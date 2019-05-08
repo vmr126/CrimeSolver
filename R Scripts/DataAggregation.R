@@ -1,6 +1,7 @@
 ## Set Working Directory
 # setwd('C:/Users/vmr12/OneDrive/Documents/GitHub/CrimeSolver')
 # setwd("/Users/timothymichalak/Documents/GitHub/CrimeSolver")
+
 ## necessary packages
 library(sqldf)
 library(fastDummies)
@@ -10,7 +11,6 @@ library(DMwR)
 ## import data
 Race <- as.data.frame(read.csv("./Data/Race Data.csv", header=TRUE, sep=","))
 Poverty_Rate <- as.data.frame(read.csv("./Data/Poverty Rate.csv", header=TRUE, sep=","))
-#County_Income <- as.data.frame(read.csv("./Data/County Income Data.csv", header=TRUE, sep=","))
 Education <- as.data.frame(read.csv("./Data/Education data.csv", header=TRUE, sep=","))
 MAP_cleared_uncleared <- read.csv("./Data/unsolvedmurders10_17.csv")
 
@@ -99,29 +99,11 @@ master <- sqldf::sqldf(join_query)
 ## Remove joined CntySt Column
 master$CntySt..11 <- NULL
 
-## list of missing counties due to irregular naming (e.g. Parishes, Boroughs, Independent Cities)
-#missing_muni <- sqldf::sqldf("select distinct CntySt from master where ed_rate is null")
-
-## Create Dummy Variables
-## master <- dummy_columns(master, select_columns=c('CntySt', 'Solved', 'Agentype', 'Year', 'Month', 'Situation', 'VicSex', 'VicRace', 'Weapon'), remove_first_dummy = TRUE,
-##                    remove_most_frequent_dummy = FALSE)
-
-## Create dummy variables, no CntySt as dummy
-## master <- dummy_columns(master, select_columns=c('Agentype', 'Year', 'Month', 'VicSex', 'VicRace', 'Weapon'), 
-##                        remove_first_dummy = TRUE,
-##                        remove_most_frequent_dummy = FALSE)
-
-
-## Remove columns that were turned into dummies
+## Removing CntyState due to computational issues
 master$CntySt <- NULL
-## master$Solved <- NULL
-## master$Agentype <- NULL
-## master$Year <- NULL
-## master$Month <- NULL
+
+## Removing situation because this basically says solved vs. unsolved
 master$Situation <- NULL
-## master$VicSex <- NULL
-## master$VicRace <- NULL
-## master$Weapon <- NULL
 
 ## Coerce as numeric or integer select variables
 master$ED_RATE <- as.numeric(master$ED_RATE)
@@ -135,12 +117,11 @@ master$NATIVE_AM <- as.integer(master$NATIVE_AM)
 master$AFR_AM <- as.integer(master$AFR_AM)
 master$WHITE <- as.integer(master$WHITE)
 
-## Coerce as factors  select variables
+## Coerce as factors select variables
 master$Solved <- as.factor(master$Solved)
 master$Agentype <- as.factor(master$Agentype)
 master$Year <- as.factor(master$Year)
 master$Month <- as.factor(master$Month)
-## master$Situation <- as.factor(master$Situation)
 master$VicSex <- as.factor(master$VicSex)
 master$VicRace <- as.factor(master$VicRace)
 master$Weapon <- as.factor(master$Weapon)

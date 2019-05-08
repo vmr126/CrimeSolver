@@ -1,0 +1,31 @@
+---
+title: "Murder Project - R Code"
+author: "Group 2"
+date: "5/8/2019"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r CustomFunctions, code=readLines("C:/Users/vmr12/OneDrive/Documents/GitHub/CrimeSolver/R Scripts/Misc_Functions.R"), eval=FALSE}
+```
+
+```{r Packages, code=readLines("C:/Users/vmr12/OneDrive/Documents/GitHub/CrimeSolver/R Scripts/Packages.R"), eval=FALSE}
+```
+
+```{r DataAggregation, code=readLines("C:/Users/vmr12/OneDrive/Documents/GitHub/CrimeSolver/R Scripts/DataAggregation.R"), eval=FALSE}
+```
+
+```{r LogisticRegression, code=readLines("C:/Users/vmr12/OneDrive/Documents/GitHub/CrimeSolver/R Scripts/LogisticRegression.R"), eval=FALSE}
+```
+
+```{r DecisionTree, code=readLines("C:/Users/vmr12/OneDrive/Documents/GitHub/CrimeSolver/R Scripts/DecisionTree.R"), eval=FALSE}
+```
+
+```{r SummaryStats, code=readLines("C:/Users/vmr12/OneDrive/Documents/GitHub/CrimeSolver/R Scripts/Summary Statistics and Visualizations.R"), eval=FALSE}
+```

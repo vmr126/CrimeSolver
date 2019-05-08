@@ -8,7 +8,6 @@ library(caret)
 library(boot)
 library(glmnet)
 
-#master.train$CntySt <- NULL
 # Logit model on training data
 balanced.logistic_regression <- glm(
         formula = Solved ~.,
@@ -21,6 +20,7 @@ train.logistic_regression <- glm(
         family = "binomial",
         data = master.train
 )
+
 # Generate probabilities w/ training logit
 train.glm.prob <- predict(
                 train.logistic_regression,
@@ -31,32 +31,8 @@ balanced.glm.prob <- predict(
         balanced.logistic_regression,
         type="response"
 )
-#################### Ignore
-## Create empty table for confusion matrix
-#balanced.glm.pred <- rep("No",
-#                      nrow(balanced_data)
-#                      )
-#
-#train.glm.pred <- rep("No",
-#                        nrow(master.train)
-#)
-## All predictions > 0.5 coded as SOLVED
-#train.glm.pred[train.glm.prob>0.5]<-"Yes"
-#balanced.glm.pred[balanced.glm.prob>0.5] <- "Yes"
-## Confusion Matrix for training logit
-#confusion.logit.train <- table(
-#                                train.glm.pred,
-#                              master.train$Solved
-#                               )
-#
-#confusion.logit.balanced <- table(
-#        balanced.glm.pred,
-#        balanced_data$Solved
-#)
-#
-####################### Ignore
-## Predict test data
 
+## Predict test data
 test.glm.prob <- predict(
                 train.logistic_regression, 
                 newdata=master.test,
@@ -121,26 +97,6 @@ pred = predict(mod_fit,
                )
 confusion.logit.kfold <- confusionMatrix(data=pred, master.test$Solved)
 
-
-## Bootstrapping - Ignore for now
-#master.matrix <- model.matrix(Solved ~., data=master)
-# boot_fn <- function(data, index, formula) {
-#        data <- data[index,]
-#        fit <- glm(formula, 
-#                   data=data,
-#                   family = "binomial"
-#                   )
-#        return(coef(fit))
-#}
-
-# boot_fit <- boot(
-#        data = master.matrix,
-#        statistic = boot_fn,
-#        R = 2
-#)
-######### Please ignore. Vestige of the past.
-
-
 ## Lasso Model with K-Fold
 lasso.logit <- cv.glmnet(x.train, 
                       y.train,
@@ -152,6 +108,7 @@ lasso.logit <- cv.glmnet(x.train,
 lambda.min <- lasso.logit$lambda.min
 lambda.1se <- lasso.logit$lambda.1se
 lasso.coef <- coef(lasso.logit,s=lambda.1se)
+
 ## Cross validate Lasso with training data
 x.test <- model.matrix(Solved~.,
                        master.test

@@ -1,6 +1,6 @@
 ## Check if Package is already installed
-is.installed <- function(package){
-  is.element(package, installed.packages()[,1])
+installed <- function(pkg){
+  is.element(pkg, installed.packages()[,1])
 } 
 
 ## Output Recall and Precision for Trees
@@ -15,6 +15,7 @@ tree_performance <- function(matrix){
 }
 
 ## Wrap Text in Decision Tree Diagram
+## From Milborrow, 2019: http://www.milbo.org/doc/prp.pdf
 split.fun <- function(x, labs, digits, varlen, faclen)
 {
   # replace commas with spaces (needed for strwrap)
