@@ -1,7 +1,7 @@
 # CrimeSolver
-P A 397C - Statistical Analysis and Learning
-Using Machine Learning to Predict Clearance Rates
-Vineet Raman, Timothy Michalak, Julia DiFiore, and Lucas Arbulu.
+  P A 397C - Statistical Analysis and Learning
+  Using Machine Learning to Predict Clearance Rates
+  Vineet Raman, Timothy Michalak, Julia DiFiore, and Lucas Arbulu.
 
 Clearance rates 
 
